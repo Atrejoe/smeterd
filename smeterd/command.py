@@ -1,4 +1,5 @@
 import logging
+import serial
 
 from datetime import datetime
 
@@ -32,6 +33,12 @@ class ReadMeterCommand(Command):
             help='serial port to read packets from (defaults to %s)' % DEFAULT_SERIAL),
         arg('--baudrate', default=9600,
             help='baudrate for the serial connection'),
+        arg('--bytesize', default=serial.SEVENBITS,
+            help='byte size for the serial connection, choose from FIVEBITS, SIXBITS, SEVENBITS, EIGHTBITS'),
+        arg('--parity', default=serial.PARITY_EVEN,
+            help='parity for the serial connection, choose from PARITY_NONE, PARITY_EVEN, PARITY_ODD, PARITY_MARK, PARITY_SPACE'),
+        arg('--stopbits', default=serial.STOPBITS_ONE,
+            help='stop for the serial connection, choose from STOPBITS_ONE, STOPBITS_ONE_POINT_FIVE, STOPBITS_TWO'),
         arg('--tsv', action='store_true',
             help='display packet in tab separated value form'),
         arg('--raw', action='store_true',
@@ -40,7 +47,9 @@ class ReadMeterCommand(Command):
 
     def run(self, args, parser):
         meter = SmartMeter(args.serial_port,
-                           baudrate=args.baudrate)
+                           baudrate=args.baudrate,
+                           bytesize=args.bytesize,
+                           parity=args.parity)
 
         try:
             packet = meter.read_one_packet()
