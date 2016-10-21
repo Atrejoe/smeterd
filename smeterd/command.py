@@ -49,7 +49,8 @@ class ReadMeterCommand(Command):
         meter = SmartMeter(args.serial_port,
                            baudrate=args.baudrate,
                            bytesize=args.bytesize,
-                           parity=args.parity)
+                           parity=args.parity,
+                           stopbits=args.stopbits)
 
         try:
             packet = meter.read_one_packet()
