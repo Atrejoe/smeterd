@@ -17,7 +17,8 @@ class SmartMeter(object):
                 timeout=10,
                 bytesize=kwargs.get('bytesize',serial.SEVENBITS),
                 parity=kwargs.get('parity',serial.PARITY_EVEN),
-                stopbits=kwargs.get('stopbits',serial.STOPBITS_ONE)
+                stopbits=kwargs.get('stopbits',serial.STOPBITS_ONE),
+                xonxoff=kwargs.get('xonxoff',False)
             )
         except (serial.SerialException,OSError) as e:
             raise SmartMeterError(e)

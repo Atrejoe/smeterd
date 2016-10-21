@@ -39,6 +39,8 @@ class ReadMeterCommand(Command):
             help='parity for the serial connection, choose from PARITY_NONE, PARITY_EVEN, PARITY_ODD, PARITY_MARK, PARITY_SPACE'),
         arg('--stopbits', default=serial.STOPBITS_ONE,
             help='stop for the serial connection, choose from STOPBITS_ONE, STOPBITS_ONE_POINT_FIVE, STOPBITS_TWO'),
+        arg('--xonxoff', default=False,
+            help='Wether to enable software flow control'),
         arg('--tsv', action='store_true',
             help='display packet in tab separated value form'),
         arg('--raw', action='store_true',
@@ -50,7 +52,8 @@ class ReadMeterCommand(Command):
                            baudrate=args.baudrate,
                            bytesize=args.bytesize,
                            parity=args.parity,
-                           stopbits=args.stopbits)
+                           stopbits=args.stopbits,
+                           xonxoff=args.xonxoff)
 
         try:
             packet = meter.read_one_packet()
