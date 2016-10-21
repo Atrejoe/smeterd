@@ -28,12 +28,12 @@ class SmartMeter(object):
 
         log.info('New serial connection opened to %s at %s baudrate, %s byte size, parity: %s, stopbits: %s.'
                     , self.port
-                    , self.baudrate
-                    , self.bytesize
-                    , self.parity
-                    , self.stopbits)
+                    , self.serial.baudrate
+                    , self.serial.bytesize
+                    , self.serial.parity
+                    , self.serial.stopbits)
 
-        log.info(str(self))
+        log.info(str(self.serial))
 
 
     def connect(self):
