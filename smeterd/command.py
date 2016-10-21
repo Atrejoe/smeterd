@@ -33,7 +33,7 @@ class ReadMeterCommand(Command):
         arg('--baudrate', default=9600,
             help='baudrate for the serial connection'),
         arg('--tsv', action='store_true',
-            help='display packet in tab seperated value form'),
+            help='display packet in tab separated value form'),
         arg('--raw', action='store_true',
             help='display packet in raw form'),
     ]
