@@ -25,7 +25,14 @@ class SmartMeter(object):
             self.serial.setRTS(False)
             self.port = self.serial.name
 
-        log.info('New serial connection opened to %s', self.port)
+        log.info('New serial connection opened to %s at %s baudrate, %s byte size, parity: %s, stopbits: %s.'
+                    , self.port
+                    , self.baudrate
+                    , self.bytesize
+                    , self.parity
+                    , self.stopbits)
+
+        log.info(str(self))
 
 
     def connect(self):
