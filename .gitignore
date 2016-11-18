@@ -27,3 +27,5 @@ sdist
 tags
 .vs/
 .eggs/
+smeterd.pyproj
+smeterd.sln
